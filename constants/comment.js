@@ -1,0 +1,80 @@
+export const commentData = [
+  {
+    content: "This article is really insightful! Thanks for sharing.",
+    user: "67abcc676bdbe1c8277c9ad1",
+    post: "67ac28f3da6bbfd4611ad814",
+    createdAt: new Date("2025-02-12T08:30:00Z"),
+  },
+  {
+    content: "Minimalist fashion is timeless. Love this take!",
+    user: "67abcc676bdbe1c8277c9ae1",
+    post: "67ac28f3da6bbfd4611ad829",
+    createdAt: new Date("2025-02-09T14:45:00Z"),
+  },
+  {
+    content: "I love the style trends mentioned here. Can't wait to try them!",
+    user: "67abcc676bdbe1c8277c9ad2",
+    post: "67ac28f3da6bbfd4611ad815",
+    createdAt: new Date("2025-02-10T14:45:00Z"),
+  },
+  {
+    content: "Coding interviews are tough! These tips really help.",
+    user: "67abcc676bdbe1c8277c9ad3",
+    post: "67ac28f3da6bbfd4611ad816",
+    createdAt: new Date("2025-02-11T19:10:00Z"),
+  },
+  {
+    content: "This guide helped me plan my next trip. Thank you!",
+    user: "67abcc676bdbe1c8277c9ad4",
+    post: "67ac28f3da6bbfd4611ad817",
+    createdAt: new Date("2025-02-09T21:00:00Z"),
+  },
+  {
+    content: "Street food is always the best way to explore a culture!",
+    user: "67abcc676bdbe1c8277c9ad6",
+    post: "67ac28f3da6bbfd4611ad819",
+    createdAt: new Date("2025-02-12T12:00:00Z"),
+  },
+  {
+    content: "Sustainable fashion is the future! Great insights.",
+    user: "67abcc676bdbe1c8277c9ad8",
+    post: "67ac28f3da6bbfd4611ad820",
+    createdAt: new Date("2025-02-08T09:30:00Z"),
+  },
+  {
+    content: "AI in coding is such an exciting topic!",
+    user: "67abcc676bdbe1c8277c9ad9",
+    post: "67ac28f3da6bbfd4611ad821",
+    createdAt: new Date("2025-02-06T18:50:00Z"),
+  },
+  {
+    content: "The psychology behind coding is fascinating!",
+    user: "67abcc676bdbe1c8277c9adb",
+    post: "67ac28f3da6bbfd4611ad823",
+    createdAt: new Date("2025-02-10T22:30:00Z"),
+  },
+  {
+    content: "Best coffee spots in Italy? I'm booking my trip now!",
+    user: "67abcc676bdbe1c8277c9adc",
+    post: "67ac28f3da6bbfd4611ad824",
+    createdAt: new Date("2025-02-03T11:20:00Z"),
+  },
+  {
+    content: "Coding remotely is my dream job. Great article!",
+    user: "67abcc676bdbe1c8277c9ade",
+    post: "67ac28f3da6bbfd4611ad826",
+    createdAt: new Date("2025-02-01T20:00:00Z"),
+  },
+  {
+    content: "Vintage fashion is making a huge comeback!",
+    user: "67abcc676bdbe1c8277c9ae0",
+    post: "67ac28f3da6bbfd4611ad828",
+    createdAt: new Date("2025-02-04T13:30:00Z"),
+  },
+  {
+    content: "Luxury travel on a budget is exactly what I need!",
+    user: "67abcc676bdbe1c8277c9ae5",
+    post: "67ac28f3da6bbfd4611ad833",
+    createdAt: new Date("2025-02-10T09:00:00Z"),
+  },
+];
