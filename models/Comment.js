@@ -1,13 +1,24 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const CommentSchema = new Schema(
+const CommentSchema = new mongoose.Schema(
   {
     content: { type: String, required: true },
-    user: { type: Schema.Types.ObjectId, ref: "User", required: true },
-    post: { type: Schema.Types.ObjectId, ref: "Post", required: true },
-    createdAt: { type: Date, default: Date.now },
+    postId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post",
+      required: true,
+    },
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-export const Comment = mongoose.model("Comment", CommentSchema);
+// Check if the model already exists to avoid redefining it
+const Comment =
+  mongoose.models.Comment || mongoose.model("Comment", CommentSchema);
+
+export default Comment;

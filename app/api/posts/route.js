@@ -1,4 +1,4 @@
-import { connectDB } from "@/lib/mongodb";
+import connectDB from "@/lib/mongodb";
 import Category from "@/models/Category";
 import { Post } from "@/models/Post";
 

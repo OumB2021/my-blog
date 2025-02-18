@@ -5,5 +5,14 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["app", "components", "lib", "providers", "middleware"]
+  "include": [
+    "app",
+    "components",
+    "lib",
+    "providers",
+    "middleware",
+    "models",
+    "seeds",
+    "data"
+  ]
 }

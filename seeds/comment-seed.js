@@ -1,6 +1,6 @@
-import { commentData } from "@/constants/comment";
-import { connectDB } from "@/lib/mongodb";
-import { Comment } from "@/models/Comment";
+import Comment from "../models/Comment.js";
+import { commentData } from "../constants/comment.js";
+import connectDB from "../lib/mongodb.js";
 
 export async function seedComments() {
   try {

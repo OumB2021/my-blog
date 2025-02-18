@@ -1,25 +1,34 @@
-import CommentSection from "@/components/comments/comments";
 import Menu from "@/components/menu";
 import { formattedDate } from "@/lib/utils";
 import Image from "next/image";
+import PostRender from "../_components/post-render";
+import CommentSection from "@/components/comments/comments";
 
 const getData = async (slug) => {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
-  const res = await fetch(`${baseUrl}/api/posts/${slug}`, {
-    cache: "no-store",
-  });
+  try {
+    const res = await fetch(`${baseUrl}/api/posts/${slug}`, {
+      cache: "no-store",
+    });
 
-  if (!res.ok) {
+    if (!res.ok) {
+      throw new Error("Failed to fetch post data");
+    }
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching post data:", error);
     throw new Error("Something went wrong");
   }
-
-  return res.json();
 };
 
 async function SinglePage({ params }) {
   const slug = (await params).slug || "";
   const data = await getData(slug);
   const date = formattedDate(data.createdAt);
+  const { description } = data;
+
   return (
     <div>
       <div className="flex flex-col-reverse md:flex-row items-center gap-5 md:gap-10 mt-10">
@@ -56,11 +65,11 @@ async function SinglePage({ params }) {
       <div className="mt-[50px] flex gap-10">
         <div className="w-full md:w-2/3">
           <div className="flex flex-col gap-4 text-sm md:text-base">
-            <p>{data.description}</p>
+            <PostRender description={description} />
           </div>
-          <div>
+          {/* <div>
             <CommentSection slug={slug} />
-          </div>
+          </div> */}
         </div>
         <Menu />
       </div>
