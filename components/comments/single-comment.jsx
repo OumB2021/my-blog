@@ -3,14 +3,15 @@ import { IComment } from "@/models/Comment";
 import Image from "next/image";
 
 function SingleComment({ item }) {
-  const { user, content } = item;
+  const { userId, content } = item;
   const date = formattedDate(item.createdAt);
+
   return (
     <div className="flex flex-col gap-2 bg-white p-3 rounded-md shadow-sm">
       <div className="flex items-center gap-4 ">
         <div className="w-[40px] h-[40px] relative">
           <Image
-            src={user.image}
+            src={userId.image}
             alt=""
             fill
             className="rounded-full object-fill"
@@ -18,7 +19,7 @@ function SingleComment({ item }) {
         </div>
         <div className="flex flex-col text-sm text-muted-foreground">
           <span className="text-zinc-800 font-semibold text-base">
-            {user.name}
+            {userId.name}
           </span>
           <span>{date}</span>
         </div>

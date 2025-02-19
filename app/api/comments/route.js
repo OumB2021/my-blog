@@ -6,24 +6,21 @@ export async function GET(req) {
   const { searchParams } = new URL(req.url);
 
   const slug = searchParams.get("postSlug");
-  console.log("slug: " + slug);
   if (!slug) {
     return new Response("Invalid slug", { status: 400 });
   }
   const decodedSlug = decodeURIComponent(slug.trim());
-  console.log("DecodedSlug: " + decodedSlug);
   try {
     await connectDB();
 
     const post = await Post.findOne({ slug: decodedSlug });
-    console.log(post);
     if (!post) {
       return new Response("Post not found", { status: 404 });
     }
 
     // Fetch comments of post
-    const comments = await Comment.find({ post: post._id }).populate(
-      "user",
+    const comments = await Comment.find({ postId: post._id }).populate(
+      "userId",
       "name image"
     );
 

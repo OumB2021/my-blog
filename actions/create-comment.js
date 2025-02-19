@@ -18,6 +18,7 @@ export const createComment = async (formData) => {
   const slug = formData.get("slug");
   const userEmail = session.user?.email;
 
+  console.log(comment + " " + slug + " " + userEmail);
   if (!comment || !slug) {
     throw new Error("Invalid request");
   }
@@ -39,8 +40,8 @@ export const createComment = async (formData) => {
   // create a new comment
   const newComment = await Comment.create({
     content: comment,
-    user: foundUser._id,
-    post: foundPost._id,
+    userId: foundUser._id,
+    postId: foundPost._id,
   });
 
   if (newComment) {

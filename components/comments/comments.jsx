@@ -28,6 +28,7 @@ function CommentSection({ slug }) {
     return <div>Failed to load comments</div>;
   }
 
+  console.log(data);
   return (
     <div className="flex flex-col mt-10">
       <h1 className="text-lg md:text-2xl font-bold">Comments</h1>
