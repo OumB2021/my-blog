@@ -9,21 +9,24 @@ import CommentForm from "./comment-form";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
-  const data = await res.json();
-
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
-  return data;
+  return res.json();
 };
+
 function CommentSection({ slug }) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL;
   const { status } = useSession();
-  const { data, isLoading } = useSWR(
+  const { data, isLoading, error } = useSWR(
     `${baseUrl}/api/comments?postSlug=${slug}`,
     fetcher,
     { refreshInterval: 3000 }
   );
+
+  if (error) {
+    return <div>Failed to load comments</div>;
+  }
 
   return (
     <div className="flex flex-col mt-10">
@@ -50,10 +53,10 @@ function CommentSection({ slug }) {
           <div className="flex items-center justify-center">
             <Loader2 className="animate-spin text-muted-foreground" />
           </div>
-        ) : data.length > 0 ? (
+        ) : Array.isArray(data) && data.length > 0 ? (
           <div className="flex flex-col gap-3">
             {[...data].reverse().map((item) => (
-              <SingleComment key={item.content} item={item} />
+              <SingleComment key={item._id} item={item} />
             ))}
           </div>
         ) : (
@@ -67,4 +70,5 @@ function CommentSection({ slug }) {
     </div>
   );
 }
+
 export default CommentSection;

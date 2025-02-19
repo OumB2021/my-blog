@@ -67,9 +67,9 @@ async function SinglePage({ params }) {
           <div className="flex flex-col gap-4 text-sm md:text-base">
             <PostRender description={description} />
           </div>
-          {/* <div>
+          <div>
             <CommentSection slug={slug} />
-          </div> */}
+          </div>
         </div>
         <Menu />
       </div>

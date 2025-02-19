@@ -1,42 +1,39 @@
 import connectDB from "@/lib/mongodb";
-import { Comment } from "@/models/Comment";
-import { Post } from "@/models/Post";
-import { User } from "@/models/User";
+import Comment from "@/models/Comment";
+import Post from "@/models/Post";
 
 export async function GET(req) {
   const { searchParams } = new URL(req.url);
+
   const slug = searchParams.get("postSlug");
+  console.log("slug: " + slug);
   if (!slug) {
     return new Response("Invalid slug", { status: 400 });
   }
   const decodedSlug = decodeURIComponent(slug.trim());
+  console.log("DecodedSlug: " + decodedSlug);
   try {
     await connectDB();
 
-    if (!User) {
-      throw new Error("User is not registered");
-    }
-
     const post = await Post.findOne({ slug: decodedSlug });
+    console.log(post);
     if (!post) {
       return new Response("Post not found", { status: 404 });
     }
 
-    // fetch comments of post
+    // Fetch comments of post
     const comments = await Comment.find({ post: post._id }).populate(
       "user",
       "name image"
     );
 
-    if (!comments) {
-      return new Response("No comments found", { status: 404 });
-    }
+    console.log(comments);
 
     return new Response(JSON.stringify(comments), { status: 200 });
   } catch (error) {
     console.log("error", error);
     return new Response(
-      JSON.stringify({ message: "Something went wrong", status: 400 })
+      JSON.stringify({ message: "Something went wrong", status: 500 })
     );
   }
 }

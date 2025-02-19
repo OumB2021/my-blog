@@ -1,6 +1,6 @@
 import connectDB from "@/lib/mongodb";
 import Category from "@/models/Category";
-import { Post } from "@/models/Post";
+import Post from "@/models/Post";
 
 export async function GET(req) {
   const POST_PER_PAGE = 4;

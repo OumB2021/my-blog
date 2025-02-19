@@ -1,5 +1,5 @@
 import connectDB from "@/lib/mongodb";
-import { Post } from "@/models/Post";
+import Post from "@/models/Post";
 export async function getTopPicked() {
   await connectDB();
 

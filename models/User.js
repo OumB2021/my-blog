@@ -11,4 +11,6 @@ const UserSchema = new Schema(
 );
 
 // ✅ Use a global variable to prevent model redefinition
-export const User = mongoose.models.User || mongoose.model("User", UserSchema);
+const User = mongoose.models.User || mongoose.model("User", UserSchema);
+
+export default User;

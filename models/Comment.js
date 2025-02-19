@@ -17,8 +17,8 @@ const CommentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Check if the model already exists to avoid redefining it
+// ✅ Ensure mongoose.models is defined before accessing it
 const Comment =
-  mongoose.models.Comment || mongoose.model("Comment", CommentSchema);
+  mongoose.models?.Comment || mongoose.model("Comment", CommentSchema);
 
 export default Comment;
